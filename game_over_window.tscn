@@ -1,0 +1,76 @@
+[gd_scene load_steps=8 format=3 uid="uid://cjbotjan1qhk2"]
+
+[ext_resource type="Script" path="res://control.gd" id="1_1ic4p"]
+[ext_resource type="FontFile" uid="uid://c8sectym51mc4" path="res://ASSETS/BitPotion.ttf" id="2_we4xf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n5vgr"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yodar"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_46ts0"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5hl0p"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="Theme" id="Theme_6424g"]
+Button/colors/font_hover_color = Color(0, 0, 0, 1)
+Button/fonts/font = ExtResource("2_we4xf")
+Button/styles/focus = SubResource("StyleBoxFlat_n5vgr")
+Button/styles/hover = SubResource("StyleBoxFlat_yodar")
+Button/styles/normal = SubResource("StyleBoxFlat_46ts0")
+Button/styles/pressed = SubResource("StyleBoxFlat_5hl0p")
+
+[node name="game_over_window" type="Window"]
+process_mode = 2
+auto_translate_mode = 1
+initial_position = 2
+size = Vector2i(100, 50)
+visible = false
+unresizable = true
+borderless = true
+always_on_top = true
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1ic4p")
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -23.0
+offset_right = 23.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_we4xf")
+theme_override_font_sizes/font_size = 16
+text = "GAME OVER
+
+"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_6424g")
+text = "MENU"

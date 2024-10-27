@@ -1,7 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://b5yf3033h5m3n"]
+[gd_scene load_steps=7 format=3 uid="uid://b5yf3033h5m3n"]
 
 [ext_resource type="Script" path="res://main menu/main_menu.gd" id="1_c81jl"]
 [ext_resource type="Texture2D" uid="uid://cpeocj2sqomvt" path="res://ASSETS/game UI.png" id="2_0xp7y"]
+[ext_resource type="Texture2D" uid="uid://ximsk06lrnwy" path="res://ASSETS/1bit 16px icons part-2 outlines.png" id="2_86t8b"]
+[ext_resource type="Theme" uid="uid://c8x8ln26cthvb" path="res://unvis_button.tres" id="3_f6cxn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1bf7j"]
+atlas = ExtResource("2_86t8b")
+region = Rect2(8, 415, 17, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dy5dw"]
+atlas = ExtResource("2_86t8b")
+region = Rect2(55, 319, 18, 18)
 
 [node name="main_menu" type="Control"]
 layout_mode = 3
@@ -21,7 +31,7 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="ColorRect" type="ColorRect" parent="screen"]
+[node name="background" type="ColorRect" parent="screen"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -29,6 +39,36 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="screen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="screen/CenterContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="debug_button" type="TextureButton" parent="screen/CenterContainer/GridContainer"]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_1bf7j")
+
+[node name="debug_text" type="Button" parent="screen/CenterContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("3_f6cxn")
+text = "DEBUG SYSTEM"
+
+[node name="upgrades_button" type="TextureButton" parent="screen/CenterContainer/GridContainer"]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_dy5dw")
+
+[node name="upgrades_text" type="Button" parent="screen/CenterContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("3_f6cxn")
+text = "UPGRADES"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(288, 162)
@@ -50,16 +90,4 @@ patch_margin_bottom = 50
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
-[node name="LEVEL1" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.357639
-anchor_top = 0.466049
-anchor_right = 0.568
-anchor_bottom = 0.562
-offset_right = -0.167999
-offset_bottom = -0.0880127
-text = "GO TO LEVEL 1"
-metadata/_edit_use_anchors_ = true
-
-[connection signal="pressed" from="LEVEL1" to="." method="_on_level_1_pressed"]
+[connection signal="pressed" from="screen/CenterContainer/GridContainer/debug_text" to="." method="_on_debug_text_pressed"]

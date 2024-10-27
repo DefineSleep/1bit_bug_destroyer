@@ -6,6 +6,8 @@ signal health_depleted
 @onready var health_bar: TextureProgressBar = $Camera2D/HUD/TextureProgressBar
 @onready var dps_timer: Timer = $dps_timer
 
+
+
 var char_speed : int = Global.player_data.player_movement_speed
 var last_direction : Vector2 
 
@@ -19,7 +21,6 @@ func _physics_process(delta):
 		current_health -= damage_rate * overlapping_mobs.size() * delta
 		if current_health <= 0:
 			health_depleted.emit()
-			printerr("YOU DIED BITCH")
 	update_health()
 
 
@@ -57,3 +58,7 @@ func take_DPS():
 
 func _on_dps_timer_timeout() -> void:
 	take_DPS()
+
+#-------------
+# GAME OVER
+#-------------

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dvc23yujypo2u"]
+[gd_scene load_steps=12 format=3 uid="uid://dvc23yujypo2u"]
 
 [ext_resource type="Script" path="res://enemy_1.gd" id="1_1gkyj"]
 [ext_resource type="Texture2D" uid="uid://dq2va6qcdwhe7" path="res://ASSETS/SpriteSheetTransparen_OUTLINEDt.png" id="2_bnsrr"]
@@ -40,7 +40,17 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ho2ks"]
-size = Vector2(9, 4)
+size = Vector2(10.971, 8)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yyqlm"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_emt6m"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Theme" id="Theme_vlitm"]
+ProgressBar/styles/background = SubResource("StyleBoxFlat_yyqlm")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_emt6m")
 
 [node name="enemy_1" type="CharacterBody2D" groups=["enemy"]]
 scale = Vector2(1.00264, 1)
@@ -54,5 +64,13 @@ autoplay = "default"
 frame_progress = 0.396159
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 2)
+position = Vector2(0.498683, 0)
 shape = SubResource("RectangleShape2D_ho2ks")
+
+[node name="health_bar" type="ProgressBar" parent="."]
+offset_left = -6.0
+offset_top = -6.0
+offset_right = 7.0
+offset_bottom = -5.0
+theme = SubResource("Theme_vlitm")
+show_percentage = false

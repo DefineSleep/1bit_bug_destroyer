@@ -1,13 +1,14 @@
-[gd_scene load_steps=14 format=4 uid="uid://2yxqj730vpul"]
+[gd_scene load_steps=16 format=4 uid="uid://2yxqj730vpul"]
 
 [ext_resource type="Texture2D" uid="uid://b7ivj3j4r4psc" path="res://ASSETS/TX Tileset Grass.png" id="1_ovey0"]
 [ext_resource type="Script" path="res://level_1.gd" id="1_q6p6i"]
 [ext_resource type="PackedScene" uid="uid://ch1ymld48peyg" path="res://player.tscn" id="2_l8aby"]
 [ext_resource type="Texture2D" uid="uid://cpeocj2sqomvt" path="res://ASSETS/game UI.png" id="3_0ewno"]
-[ext_resource type="PackedScene" uid="uid://dvc23yujypo2u" path="res://enemy_1.tscn" id="4_0k5qu"]
 [ext_resource type="Texture2D" uid="uid://b4i8hr0oga0iq" path="res://ASSETS/PROGRESS_BAR.png" id="4_72oeu"]
 [ext_resource type="FontFile" uid="uid://c8sectym51mc4" path="res://ASSETS/BitPotion.ttf" id="6_uhx1l"]
 [ext_resource type="PackedScene" uid="uid://irb4v5qb15df" path="res://coin.tscn" id="7_g4j3w"]
+[ext_resource type="Script" path="res://control.gd" id="8_rnwoi"]
+[ext_resource type="Theme" uid="uid://c8x8ln26cthvb" path="res://unvis_button.tres" id="9_rm18q"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hkws0"]
 texture = ExtResource("1_ovey0")
@@ -283,6 +284,12 @@ region = Rect2(16, 28, 96, 16)
 atlas = ExtResource("4_72oeu")
 region = Rect2(17, 49, 94, 14)
 
+[sub_resource type="Curve2D" id="Curve2D_ont8b"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -326, -200, -77.5655, 5.78365, 77.5655, -5.78365, 337, -191, 69.61, -67.476, -69.61, 67.476, 367, 167, 89.4986, 17.351, -89.4986, -17.351, -347, 201, -68.6156, 0.963942, 68.6156, -0.963942, -342, -199, 0, 0, 0, 0, -327, -198, 0, 0, 0, 0, -326, -200)
+}
+point_count = 7
+
 [node name="level_1" type="Node2D"]
 script = ExtResource("1_q6p6i")
 
@@ -291,9 +298,10 @@ tile_map_data = PackedByteArray("AAAAAAAAAAAFAAIAAAAAAAEAAAAEAAUAAAAAAAIAAAAFAAQ
 tile_set = SubResource("TileSet_74gih")
 
 [node name="player" parent="." groups=["player"] instance=ExtResource("2_l8aby")]
-unique_name_in_owner = true
 
 [node name="Camera2D" type="Camera2D" parent="player"]
+z_index = 1
+y_sort_enabled = true
 zoom = Vector2(2, 2)
 
 [node name="NinePatchRect" type="NinePatchRect" parent="player/Camera2D"]
@@ -357,8 +365,38 @@ offset_top = 0.068
 offset_right = 0.0799561
 offset_bottom = 0.0959997
 theme_override_fonts/font = ExtResource("6_uhx1l")
+theme_override_font_sizes/font_size = 16
 text = "00:00:00"
 metadata/_edit_use_anchors_ = true
+
+[node name="money_label" type="Label" parent="player/Camera2D/HUD"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.957721
+anchor_top = 0.00724637
+anchor_right = 0.976338
+anchor_bottom = 0.0902464
+offset_right = -0.128
+offset_bottom = 0.0919991
+theme_override_fonts/font = ExtResource("6_uhx1l")
+text = "0"
+metadata/_edit_use_anchors_ = true
+
+[node name="fps_label" type="Label" parent="player/Camera2D/HUD"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.935662
+anchor_top = 0.938406
+anchor_right = 0.976573
+anchor_bottom = 0.988797
+offset_right = -0.256001
+offset_bottom = 0.0919991
+theme_override_fonts/font = ExtResource("6_uhx1l")
+text = "60"
+metadata/_edit_use_anchors_ = true
+
+[node name="spawn_timer" type="Timer" parent="player"]
+autostart = true
 
 [node name="level_timer" type="Timer" parent="player"]
 autostart = true
@@ -367,7 +405,149 @@ autostart = true
 wait_time = 5.0
 autostart = true
 
-[node name="enemy_1" parent="." instance=ExtResource("4_0k5qu")]
+[node name="Path2D" type="Path2D" parent="player"]
+position = Vector2(20.944, 15.4813)
+scale = Vector2(1.0056, 1.03741)
+curve = SubResource("Curve2D_ont8b")
 
+[node name="PathFollow2D" type="PathFollow2D" parent="player/Path2D"]
+unique_name_in_owner = true
+position = Vector2(-326, -200)
+rotation = 0.0135738
+
+[node name="game_over_window" type="Window" parent="."]
+process_mode = 2
+initial_position = 2
+size = Vector2i(100, 75)
+visible = false
+unresizable = true
+borderless = true
+always_on_top = true
+
+[node name="Control" type="Control" parent="game_over_window"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("8_rnwoi")
+
+[node name="ColorRect" type="ColorRect" parent="game_over_window/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="game_over_window/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -23.0
+offset_right = 23.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="game_over_window/Control/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_uhx1l")
+theme_override_font_sizes/font_size = 16
+text = "GAME OVER
+"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="game_over_window/Control/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("9_rm18q")
+text = "- MENU -"
+
+[node name="Button2" type="Button" parent="game_over_window/Control/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("9_rm18q")
+text = "- EXIT -"
+
+[node name="pause_menu" type="Window" parent="."]
+process_mode = 2
+auto_translate_mode = 1
+initial_position = 2
+size = Vector2i(100, 75)
+visible = false
+unresizable = true
+borderless = true
+always_on_top = true
+
+[node name="Control" type="Control" parent="pause_menu"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("8_rnwoi")
+
+[node name="ColorRect" type="ColorRect" parent="pause_menu/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="pause_menu/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -23.0
+offset_right = 23.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="pause_menu/Control/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_uhx1l")
+theme_override_font_sizes/font_size = 16
+text = "PAUSED
+"
+horizontal_alignment = 1
+
+[node name="unpause" type="Button" parent="pause_menu/Control/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("9_rm18q")
+text = "- UNPAUSE - "
+
+[node name="menu" type="Button" parent="pause_menu/Control/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("9_rm18q")
+text = "- MENU -"
+
+[node name="exit" type="Button" parent="pause_menu/Control/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("9_rm18q")
+text = "- EXIT -"
+
+[node name="game_over_shade" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="game_over_shade"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.921569)
+
+[connection signal="health_depleted" from="player" to="." method="_on_player_health_depleted"]
+[connection signal="timeout" from="player/spawn_timer" to="." method="_on_spawn_timer_timeout"]
 [connection signal="timeout" from="player/level_timer" to="." method="_on_level_timer_timeout"]
 [connection signal="timeout" from="player/dps_timer" to="player" method="_on_dps_timer_timeout"]
+[connection signal="pressed" from="game_over_window/Control/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="game_over_window/Control/VBoxContainer/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="pause_menu/Control/VBoxContainer/unpause" to="." method="_on_unpause_pressed"]
+[connection signal="pressed" from="pause_menu/Control/VBoxContainer/menu" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="pause_menu/Control/VBoxContainer/exit" to="." method="_on_exit_pressed"]
