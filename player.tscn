@@ -1,0 +1,55 @@
+[gd_scene load_steps=9 format=3 uid="uid://ch1ymld48peyg"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_it33t"]
+[ext_resource type="Texture2D" uid="uid://dq2va6qcdwhe7" path="res://ASSETS/SpriteSheetTransparen_OUTLINEDt.png" id="2_kmg3g"]
+[ext_resource type="PackedScene" uid="uid://diwlkxmcq0v2r" path="res://direction_arrow.tscn" id="3_ypqih"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0bwc0"]
+atlas = ExtResource("2_kmg3g")
+region = Rect2(192, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pdkrn"]
+atlas = ExtResource("2_kmg3g")
+region = Rect2(208, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6aprw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0bwc0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pdkrn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fd2kt"]
+radius = 4.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2n1lw"]
+radius = 6.0
+
+[node name="player" type="CharacterBody2D"]
+script = ExtResource("1_it33t")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6aprw")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_fd2kt")
+disabled = true
+
+[node name="direction_arrow" parent="." instance=ExtResource("3_ypqih")]
+
+[node name="hurt_box" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurt_box"]
+shape = SubResource("CircleShape2D_2n1lw")
+debug_color = Color(0.860877, 0.279239, 0, 0.42)

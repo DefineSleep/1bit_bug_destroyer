@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://diwlkxmcq0v2r"]
+
+[ext_resource type="Script" path="res://direction_arrow.gd" id="1_qxh3k"]
+[ext_resource type="Texture2D" uid="uid://fbvviqjkqfqp" path="res://ASSETS/All_Fire_Bullet_BLACK_AND_WHITE.png" id="2_jcngq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8jvph"]
+radius = 148.486
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2843j"]
+atlas = ExtResource("2_jcngq")
+region = Rect2(389, 166, 6, 5)
+
+[node name="direction_arrow" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_qxh3k")
+
+[node name="range" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_8jvph")
+debug_color = Color(0, 0.6, 0.701961, 0)
+
+[node name="weapon_pivot" type="Marker2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="weapon_pivot"]
+position = Vector2(15, 1)
+texture = SubResource("AtlasTexture_2843j")
+
+[node name="Marker2D" type="Marker2D" parent="weapon_pivot/Sprite2D"]
+position = Vector2(4, 0)
+
+[node name="attack_speed" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="attack_speed" to="." method="_on_attack_speed_timeout"]

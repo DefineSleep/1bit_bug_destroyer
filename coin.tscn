@@ -1,0 +1,78 @@
+[gd_scene load_steps=10 format=3 uid="uid://irb4v5qb15df"]
+
+[ext_resource type="Texture2D" uid="uid://dq2va6qcdwhe7" path="res://ASSETS/SpriteSheetTransparen_OUTLINEDt.png" id="1_ka77i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_38c0m"]
+atlas = ExtResource("1_ka77i")
+region = Rect2(128, 128, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2qx6i"]
+atlas = ExtResource("1_ka77i")
+region = Rect2(144, 128, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_btrur"]
+atlas = ExtResource("1_ka77i")
+region = Rect2(160, 128, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_82q1p"]
+atlas = ExtResource("1_ka77i")
+region = Rect2(176, 128, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mpd0h"]
+atlas = ExtResource("1_ka77i")
+region = Rect2(160, 128, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_te0bx"]
+atlas = ExtResource("1_ka77i")
+region = Rect2(144, 128, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s007g"]
+atlas = ExtResource("1_ka77i")
+region = Rect2(128, 128, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fooyd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_38c0m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2qx6i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_btrur")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_82q1p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mpd0h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_te0bx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s007g")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="coin_icon" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -5.0
+offset_top = -6.0
+offset_right = 4.0
+offset_bottom = 5.0
+pivot_offset = Vector2(5, 5)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(4, 5)
+sprite_frames = SubResource("SpriteFrames_fooyd")
+autoplay = "default"
+frame = 5
+frame_progress = 0.0653084
