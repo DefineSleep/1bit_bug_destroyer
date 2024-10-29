@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://jlj78wt738hd"]
+[gd_scene load_steps=11 format=3 uid="uid://jlj78wt738hd"]
 
 [ext_resource type="Texture2D" uid="uid://b3oydtciy60jp" path="res://ASSETS/game ui TRUE 1-bit.png" id="2_w45nh"]
 [ext_resource type="FontFile" uid="uid://c8sectym51mc4" path="res://ASSETS/BitPotion.ttf" id="3_k5s0e"]
@@ -31,19 +31,6 @@ Button/styles/focus = SubResource("StyleBoxFlat_t73xp")
 Button/styles/hover = SubResource("StyleBoxFlat_y418x")
 Button/styles/normal = SubResource("StyleBoxFlat_14tee")
 Button/styles/pressed = SubResource("StyleBoxFlat_2qp8i")
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_eomw5"]
-atlas = ExtResource("2_w45nh")
-region = Rect2(607, 642, 78, 14)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_klix4"]
-atlas = ExtResource("2_w45nh")
-region = Rect2(607, 626, 78, 14)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vpcag"]
-atlas = ExtResource("2_w45nh")
-region = Rect2(609, 611, 74, 9)
-margin = Rect2(2, 0, 0, 0)
 
 [node name="upgrade_menu" type="Control"]
 layout_mode = 3
@@ -104,11 +91,15 @@ axis_stretch_vertical = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="Control" type="Control" parent="screen"]
-anchors_preset = 0
-offset_left = 233.0
-offset_top = 96.0
-offset_right = 273.0
-offset_bottom = 136.0
+layout_mode = 1
+anchor_left = 0.426
+anchor_top = 0.348
+anchor_right = 0.501
+anchor_bottom = 0.493
+offset_left = 0.830063
+offset_top = -0.0480499
+offset_right = -0.0449219
+offset_bottom = -0.0680695
 
 [node name="upgrades_container" type="GridContainer" parent="screen/Control"]
 layout_mode = 0
@@ -120,7 +111,7 @@ columns = 3
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_k5s0e")
-text = "SPEED : "
+text = "SPEED :"
 
 [node name="amount" type="Button" parent="screen/Control/upgrades_container"]
 layout_mode = 2
@@ -129,6 +120,9 @@ text = "+1"
 
 [node name="price" type="Label" parent="screen/Control/upgrades_container"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_k5s0e")
+text = "$6"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(288, 162)
@@ -149,19 +143,3 @@ patch_margin_right = 20
 patch_margin_bottom = 50
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.333
-anchor_top = 1.086
-anchor_right = 0.722
-anchor_bottom = 1.21
-offset_left = 0.192001
-offset_top = 0.135986
-offset_right = 0.12796
-offset_bottom = -0.0400085
-nine_patch_stretch = true
-texture_under = SubResource("AtlasTexture_eomw5")
-texture_over = SubResource("AtlasTexture_klix4")
-texture_progress = SubResource("AtlasTexture_vpcag")
