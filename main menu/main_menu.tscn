@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b5yf3033h5m3n"]
+[gd_scene load_steps=8 format=3 uid="uid://b5yf3033h5m3n"]
 
 [ext_resource type="Script" path="res://main menu/main_menu.gd" id="1_c81jl"]
 [ext_resource type="Texture2D" uid="uid://cpeocj2sqomvt" path="res://ASSETS/game UI.png" id="2_0xp7y"]
@@ -10,6 +10,10 @@ atlas = ExtResource("2_86t8b")
 region = Rect2(8, 415, 17, 17)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dy5dw"]
+atlas = ExtResource("2_86t8b")
+region = Rect2(272, 368, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a7pbj"]
 atlas = ExtResource("2_86t8b")
 region = Rect2(55, 319, 18, 18)
 
@@ -58,8 +62,10 @@ texture_normal = SubResource("AtlasTexture_1bf7j")
 
 [node name="debug_text" type="Button" parent="screen/CenterContainer/GridContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme = ExtResource("3_f6cxn")
-text = "DEBUG SYSTEM"
+text = " DEBUG SYSTEM "
 
 [node name="upgrades_button" type="TextureButton" parent="screen/CenterContainer/GridContainer"]
 layout_mode = 2
@@ -67,8 +73,21 @@ texture_normal = SubResource("AtlasTexture_dy5dw")
 
 [node name="upgrades_text" type="Button" parent="screen/CenterContainer/GridContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme = ExtResource("3_f6cxn")
-text = "UPGRADES"
+text = " UPGRADES "
+
+[node name="upgrades_button2" type="TextureButton" parent="screen/CenterContainer/GridContainer"]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_a7pbj")
+
+[node name="upgrades_text2" type="Button" parent="screen/CenterContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("3_f6cxn")
+text = " SETTINGS "
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(288, 162)
@@ -91,3 +110,4 @@ axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
 [connection signal="pressed" from="screen/CenterContainer/GridContainer/debug_text" to="." method="_on_debug_text_pressed"]
+[connection signal="pressed" from="screen/CenterContainer/GridContainer/upgrades_text" to="." method="_on_upgrades_text_pressed"]

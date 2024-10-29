@@ -1,8 +1,51 @@
-[gd_scene load_steps=2 format=3 uid="uid://jlj78wt738hd"]
+[gd_scene load_steps=14 format=3 uid="uid://jlj78wt738hd"]
 
+[ext_resource type="Texture2D" uid="uid://b3oydtciy60jp" path="res://ASSETS/game ui TRUE 1-bit.png" id="2_w45nh"]
+[ext_resource type="FontFile" uid="uid://c8sectym51mc4" path="res://ASSETS/BitPotion.ttf" id="3_k5s0e"]
+[ext_resource type="Theme" uid="uid://c8x8ln26cthvb" path="res://unvis_button.tres" id="3_p7i1t"]
 [ext_resource type="Texture2D" uid="uid://cpeocj2sqomvt" path="res://ASSETS/game UI.png" id="4_pd8rm"]
 
-[node name="main_menu" type="Control"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_14hl5"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t73xp"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y418x"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_14tee"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2qp8i"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="Theme" id="Theme_8wl3g"]
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_focus_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_pressed_color = Color(0, 0, 0, 1)
+Button/fonts/font = ExtResource("3_k5s0e")
+Button/styles/disabled = SubResource("StyleBoxFlat_14hl5")
+Button/styles/focus = SubResource("StyleBoxFlat_t73xp")
+Button/styles/hover = SubResource("StyleBoxFlat_y418x")
+Button/styles/normal = SubResource("StyleBoxFlat_14tee")
+Button/styles/pressed = SubResource("StyleBoxFlat_2qp8i")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eomw5"]
+atlas = ExtResource("2_w45nh")
+region = Rect2(607, 642, 78, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_klix4"]
+atlas = ExtResource("2_w45nh")
+region = Rect2(607, 626, 78, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vpcag"]
+atlas = ExtResource("2_w45nh")
+region = Rect2(609, 611, 74, 9)
+margin = Rect2(2, 0, 0, 0)
+
+[node name="upgrade_menu" type="Control"]
 layout_mode = 3
 anchor_right = 0.5
 anchor_bottom = 0.5
@@ -11,9 +54,9 @@ grow_vertical = 2
 
 [node name="screen" type="Control" parent="."]
 layout_mode = 1
-anchor_left = 0.0260417
+anchor_left = 0.0277778
 anchor_top = 0.0493827
-anchor_right = 0.972222
+anchor_right = 0.973958
 anchor_bottom = 0.901235
 grow_horizontal = 2
 grow_vertical = 2
@@ -28,17 +71,64 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="CenterContainer" type="CenterContainer" parent="screen"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="GridContainer" type="GridContainer" parent="screen/CenterContainer"]
+[node name="back_button" type="Button" parent="screen"]
 layout_mode = 2
-columns = 2
+offset_left = 273.0
+offset_top = 248.0
+offset_right = 303.0
+offset_bottom = 261.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("3_p7i1t")
+text = " BACK "
+
+[node name="inside_window" type="NinePatchRect" parent="screen"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.413
+anchor_top = 0.261
+anchor_right = 0.677
+anchor_bottom = 0.667
+offset_left = -0.0849762
+offset_top = -0.036026
+offset_right = 0.0350647
+offset_bottom = -0.0921021
+texture = ExtResource("2_w45nh")
+region_rect = Rect2(369, 481, 60, 95)
+patch_margin_left = 5
+patch_margin_top = 20
+patch_margin_right = 15
+patch_margin_bottom = 5
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Control" type="Control" parent="screen"]
+anchors_preset = 0
+offset_left = 233.0
+offset_top = 96.0
+offset_right = 273.0
+offset_bottom = 136.0
+
+[node name="upgrades_container" type="GridContainer" parent="screen/Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+columns = 3
+
+[node name="name" type="Label" parent="screen/Control/upgrades_container"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_k5s0e")
+text = "SPEED : "
+
+[node name="amount" type="Button" parent="screen/Control/upgrades_container"]
+layout_mode = 2
+theme = SubResource("Theme_8wl3g")
+text = "+1"
+
+[node name="price" type="Label" parent="screen/Control/upgrades_container"]
+layout_mode = 2
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(288, 162)
@@ -59,3 +149,19 @@ patch_margin_right = 20
 patch_margin_bottom = 50
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.333
+anchor_top = 1.086
+anchor_right = 0.722
+anchor_bottom = 1.21
+offset_left = 0.192001
+offset_top = 0.135986
+offset_right = 0.12796
+offset_bottom = -0.0400085
+nine_patch_stretch = true
+texture_under = SubResource("AtlasTexture_eomw5")
+texture_over = SubResource("AtlasTexture_klix4")
+texture_progress = SubResource("AtlasTexture_vpcag")
