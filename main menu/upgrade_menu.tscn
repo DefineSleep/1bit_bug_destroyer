@@ -1,36 +1,22 @@
-[gd_scene load_steps=11 format=3 uid="uid://jlj78wt738hd"]
+[gd_scene load_steps=9 format=3 uid="uid://jlj78wt738hd"]
 
+[ext_resource type="Script" path="res://main menu/upgrade_menu.gd" id="1_qsghw"]
 [ext_resource type="Texture2D" uid="uid://b3oydtciy60jp" path="res://ASSETS/game ui TRUE 1-bit.png" id="2_w45nh"]
 [ext_resource type="FontFile" uid="uid://c8sectym51mc4" path="res://ASSETS/BitPotion.ttf" id="3_k5s0e"]
 [ext_resource type="Theme" uid="uid://c8x8ln26cthvb" path="res://unvis_button.tres" id="3_p7i1t"]
 [ext_resource type="Texture2D" uid="uid://cpeocj2sqomvt" path="res://ASSETS/game UI.png" id="4_pd8rm"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_14hl5"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
+[sub_resource type="AtlasTexture" id="AtlasTexture_c4khi"]
+atlas = ExtResource("2_w45nh")
+region = Rect2(652, 686, 9, 14)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t73xp"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
+[sub_resource type="AtlasTexture" id="AtlasTexture_lsujh"]
+atlas = ExtResource("2_w45nh")
+region = Rect2(652, 670, 9, 14)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y418x"]
-bg_color = Color(0, 0, 0, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_14tee"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2qp8i"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-
-[sub_resource type="Theme" id="Theme_8wl3g"]
-Button/colors/font_color = Color(0, 0, 0, 1)
-Button/colors/font_focus_color = Color(0, 0, 0, 1)
-Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
-Button/colors/font_pressed_color = Color(0, 0, 0, 1)
-Button/fonts/font = ExtResource("3_k5s0e")
-Button/styles/disabled = SubResource("StyleBoxFlat_14hl5")
-Button/styles/focus = SubResource("StyleBoxFlat_t73xp")
-Button/styles/hover = SubResource("StyleBoxFlat_y418x")
-Button/styles/normal = SubResource("StyleBoxFlat_14tee")
-Button/styles/pressed = SubResource("StyleBoxFlat_2qp8i")
+[sub_resource type="AtlasTexture" id="AtlasTexture_be3n2"]
+atlas = ExtResource("2_w45nh")
+region = Rect2(638, 686, 9, 14)
 
 [node name="upgrade_menu" type="Control"]
 layout_mode = 3
@@ -38,6 +24,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_qsghw")
 
 [node name="screen" type="Control" parent="."]
 layout_mode = 1
@@ -105,24 +92,31 @@ offset_bottom = -0.0680695
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-columns = 3
+columns = 5
 
 [node name="name" type="Label" parent="screen/Control/upgrades_container"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_k5s0e")
-text = "SPEED :"
+text = "TEST_STAT :"
 
-[node name="amount" type="Button" parent="screen/Control/upgrades_container"]
+[node name="minus" type="TextureButton" parent="screen/Control/upgrades_container"]
 layout_mode = 2
-theme = SubResource("Theme_8wl3g")
-text = "+1"
+texture_normal = SubResource("AtlasTexture_c4khi")
+texture_pressed = SubResource("AtlasTexture_lsujh")
 
 [node name="price" type="Label" parent="screen/Control/upgrades_container"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_k5s0e")
 text = "$6"
+
+[node name="plus" type="TextureButton" parent="screen/Control/upgrades_container"]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_be3n2")
+
+[node name="SpinBox" type="SpinBox" parent="screen/Control/upgrades_container"]
+layout_mode = 2
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(288, 162)
