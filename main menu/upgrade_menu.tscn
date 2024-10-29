@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://jlj78wt738hd"]
+[gd_scene load_steps=21 format=3 uid="uid://jlj78wt738hd"]
 
 [ext_resource type="Script" path="res://main menu/upgrade_menu.gd" id="1_qsghw"]
 [ext_resource type="Texture2D" uid="uid://b3oydtciy60jp" path="res://ASSETS/game ui TRUE 1-bit.png" id="2_w45nh"]
 [ext_resource type="FontFile" uid="uid://c8sectym51mc4" path="res://ASSETS/BitPotion.ttf" id="3_k5s0e"]
 [ext_resource type="Theme" uid="uid://c8x8ln26cthvb" path="res://unvis_button.tres" id="3_p7i1t"]
 [ext_resource type="Texture2D" uid="uid://cpeocj2sqomvt" path="res://ASSETS/game UI.png" id="4_pd8rm"]
+[ext_resource type="Texture2D" uid="uid://dq2va6qcdwhe7" path="res://ASSETS/SpriteSheetTransparen_OUTLINEDt.png" id="5_ffumo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c4khi"]
 atlas = ExtResource("2_w45nh")
@@ -12,11 +13,80 @@ region = Rect2(652, 686, 9, 14)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lsujh"]
 atlas = ExtResource("2_w45nh")
+region = Rect2(652, 686, 9, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v84g5"]
+atlas = ExtResource("2_w45nh")
 region = Rect2(652, 670, 9, 14)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_be3n2"]
 atlas = ExtResource("2_w45nh")
 region = Rect2(638, 686, 9, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lk1gl"]
+atlas = ExtResource("2_w45nh")
+region = Rect2(638, 686, 9, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_udbg8"]
+atlas = ExtResource("2_w45nh")
+region = Rect2(638, 670, 9, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2gcqj"]
+atlas = ExtResource("5_ffumo")
+region = Rect2(128, 128, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o3m2y"]
+atlas = ExtResource("5_ffumo")
+region = Rect2(144, 128, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fmrvd"]
+atlas = ExtResource("5_ffumo")
+region = Rect2(160, 128, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8bjw0"]
+atlas = ExtResource("5_ffumo")
+region = Rect2(176, 128, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nu7ql"]
+atlas = ExtResource("5_ffumo")
+region = Rect2(160, 128, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hsdvr"]
+atlas = ExtResource("5_ffumo")
+region = Rect2(144, 128, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_um2iy"]
+atlas = ExtResource("5_ffumo")
+region = Rect2(128, 128, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_brd40"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2gcqj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o3m2y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fmrvd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8bjw0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nu7ql")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hsdvr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_um2iy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="upgrade_menu" type="Control"]
 layout_mode = 3
@@ -77,46 +147,85 @@ axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Control" type="Control" parent="screen"]
+[node name="group" type="Control" parent="screen/inside_window"]
 layout_mode = 1
-anchor_left = 0.426
-anchor_top = 0.348
-anchor_right = 0.501
-anchor_bottom = 0.493
-offset_left = 0.830063
-offset_top = -0.0480499
-offset_right = -0.0449219
-offset_bottom = -0.0680695
+anchor_left = 0.0486111
+anchor_top = 0.214286
+anchor_right = 0.9375
+anchor_bottom = 0.928571
+offset_bottom = 2.28882e-05
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
-[node name="upgrades_container" type="GridContainer" parent="screen/Control"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-columns = 5
+[node name="upgrades_container" type="GridContainer" parent="screen/inside_window/group"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.688
+anchor_bottom = 0.5
+offset_left = 4.57764e-05
+offset_right = -0.0639572
+columns = 4
 
-[node name="name" type="Label" parent="screen/Control/upgrades_container"]
+[node name="name" type="Label" parent="screen/inside_window/group/upgrades_container"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_k5s0e")
-text = "TEST_STAT :"
+text = "test"
 
-[node name="minus" type="TextureButton" parent="screen/Control/upgrades_container"]
+[node name="minus" type="TextureButton" parent="screen/inside_window/group/upgrades_container"]
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_c4khi")
 texture_pressed = SubResource("AtlasTexture_lsujh")
+texture_hover = SubResource("AtlasTexture_v84g5")
 
-[node name="price" type="Label" parent="screen/Control/upgrades_container"]
+[node name="price" type="Label" parent="screen/inside_window/group/upgrades_container"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_k5s0e")
 text = "$6"
 
-[node name="plus" type="TextureButton" parent="screen/Control/upgrades_container"]
+[node name="plus" type="TextureButton" parent="screen/inside_window/group/upgrades_container"]
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_be3n2")
+texture_pressed = SubResource("AtlasTexture_lk1gl")
+texture_hover = SubResource("AtlasTexture_udbg8")
 
-[node name="SpinBox" type="SpinBox" parent="screen/Control/upgrades_container"]
-layout_mode = 2
+[node name="test_label" type="Label" parent="screen/inside_window/group"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.313
+anchor_bottom = 0.3
+offset_left = -104.0
+offset_top = -64.0
+offset_right = -104.064
+offset_bottom = -65.0
+text = "TEST"
+
+[node name="test_label2" type="Label" parent="screen/inside_window/group"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.313
+anchor_bottom = 0.3
+offset_left = -104.0
+offset_top = 104.0
+offset_right = -104.064
+offset_bottom = 103.0
+text = "TEST"
+
+[node name="money_sprite" type="AnimatedSprite2D" parent="screen/inside_window/group"]
+position = Vector2(3.00005, 76)
+sprite_frames = SubResource("SpriteFrames_brd40")
+autoplay = "default"
+
+[node name="player_money_label" type="Label" parent="screen/inside_window/group/money_sprite"]
+offset_left = 8.0
+offset_top = -7.0
+offset_right = 48.0
+offset_bottom = 16.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_k5s0e")
+text = "10"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(288, 162)
@@ -137,3 +246,6 @@ patch_margin_right = 20
 patch_margin_bottom = 50
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
+
+[connection signal="pressed" from="screen/inside_window/group/upgrades_container/minus" to="." method="_on_minus_pressed"]
+[connection signal="pressed" from="screen/inside_window/group/upgrades_container/plus" to="." method="_on_plus_pressed"]

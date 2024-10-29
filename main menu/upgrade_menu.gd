@@ -1,11 +1,78 @@
 extends Control
 
+@onready var stat_name: Label = $screen/inside_window/group/upgrades_container/name
+@onready var minus: TextureButton = $screen/inside_window/group/upgrades_container/minus
+@onready var plus: TextureButton = $screen/inside_window/group/upgrades_container/plus
+@onready var price: Label = $screen/inside_window/group/upgrades_container/price
 
-# Called when the node enters the scene tree for the first time.
+@onready var test_label: Label = $screen/inside_window/group/test_label
+@onready var test_label_2: Label = $screen/inside_window/group/test_label2
+
+
+@onready var player_money_label: Label = $screen/inside_window/group/money_sprite/player_money_label
+
+# -------------------
+# READY, PROCESS AND PHYSICS
+# -------------------
+
 func _ready() -> void:
-	pass # Replace with function body.
+	pass 
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	skill_one_name = "HP:" + str(Global.player_data.player_max_hp)
+	update_skill_1()
+	player_money_label.text = str(Global.player_data.player_money)
+	#TEST
+	test_label.text = str(upgrade_price_list)
+	test_label_2.text = str(refund_list)
+	
+# -------------------
+
+
+
+# -------------------
+# SKILL ONE 
+# -------------------
+
+# skill name 
+
+@onready var skill_one_name
+var upgrade_price_list : Array = [8,12,24,47,86,122] 
+var refund_list : Array = []
+
+func update_skill_1():
+	stat_name.text = skill_one_name
+	if upgrade_price_list.is_empty() == false:
+		price.text = str(upgrade_price_list[0])
+	else: price.text = "SOLDOUT"
+
+
+
+func skill_pruchase(_skill_price)-> void:
+	if upgrade_price_list.is_empty() == false:
+		Global.player_data.player_max_hp +=1
+		Global.player_data.player_money -= _skill_price[0]
+		refund_list.insert(0,upgrade_price_list[0])
+		_skill_price.remove_at(0)
+	else : 
+		printerr("ITS EMPTY")
+
+		
+		
+func skill_refund()->void:
+	Global.player_data.player_money += refund_list[0]
+	
+
+func _on_minus_pressed() -> void:
+	skill_refund()
+
+
+func _on_plus_pressed() -> void:
+	if upgrade_price_list.is_empty() == false :
+		if Global.player_data.player_money >= upgrade_price_list[0]:
+			skill_pruchase(upgrade_price_list)
+		else : 
+			plus.disabled = true
+			printerr("NOT ENOUGH MONEY HOE")
+	else: pass

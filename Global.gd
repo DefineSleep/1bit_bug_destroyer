@@ -5,7 +5,7 @@ var enemies_killed : int
 var player_data : Dictionary = {
 	
 	"player_max_hp" : 50,
-	"player_money" : 0,
+	"player_money" : 1000,
 	"player_movement_speed" : 100,
 	"current_bullet_type" : "res://bullet.tscn",
 	"bullet_damage" : 25,
