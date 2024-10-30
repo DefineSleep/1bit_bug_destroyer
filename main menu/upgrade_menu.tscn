@@ -191,15 +191,39 @@ texture_normal = SubResource("AtlasTexture_be3n2")
 texture_pressed = SubResource("AtlasTexture_lk1gl")
 texture_hover = SubResource("AtlasTexture_udbg8")
 
+[node name="name2" type="Label" parent="screen/inside_window/group/upgrades_container"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_k5s0e")
+text = "test"
+
+[node name="minus2" type="TextureButton" parent="screen/inside_window/group/upgrades_container"]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_c4khi")
+texture_pressed = SubResource("AtlasTexture_lsujh")
+texture_hover = SubResource("AtlasTexture_v84g5")
+
+[node name="price2" type="Label" parent="screen/inside_window/group/upgrades_container"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_k5s0e")
+text = "$6"
+
+[node name="plus2" type="TextureButton" parent="screen/inside_window/group/upgrades_container"]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_be3n2")
+texture_pressed = SubResource("AtlasTexture_lk1gl")
+texture_hover = SubResource("AtlasTexture_udbg8")
+
 [node name="test_label" type="Label" parent="screen/inside_window/group"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.313
 anchor_bottom = 0.3
-offset_left = -104.0
-offset_top = -64.0
-offset_right = -104.064
-offset_bottom = -65.0
+offset_left = -223.0
+offset_top = -91.0
+offset_right = -223.064
+offset_bottom = -92.0
 text = "TEST"
 
 [node name="test_label2" type="Label" parent="screen/inside_window/group"]
@@ -207,10 +231,10 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.313
 anchor_bottom = 0.3
-offset_left = -104.0
-offset_top = 104.0
-offset_right = -104.064
-offset_bottom = 103.0
+offset_left = -223.0
+offset_top = -66.0
+offset_right = -223.064
+offset_bottom = -67.0
 text = "TEST"
 
 [node name="money_sprite" type="AnimatedSprite2D" parent="screen/inside_window/group"]
