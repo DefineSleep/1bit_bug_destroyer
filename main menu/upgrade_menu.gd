@@ -49,16 +49,13 @@ func _process(delta: float) -> void:
 var skill_one_name
 var upgrade_price_list : Array = [8,12,24,47,86,122] 
 var refund_list : Array = []
-
+var upgrade_list : Array = [1,1,1,1,1,1]
 func update_skill_1():
 	skill_one_name = "HP:" + str(Global.player_data.player_max_hp)
 	stat_name.text = skill_one_name
-
 	if upgrade_price_list.is_empty() == false:
 		price.text = str(upgrade_price_list[0])
 	else: price.text = "SOLDOUT"
-
-
 
 func skill_pruchase(_skill_price:Array)-> void:
 	if upgrade_price_list.is_empty() == false:
@@ -68,16 +65,16 @@ func skill_pruchase(_skill_price:Array)-> void:
 		_skill_price.remove_at(0)
 	else : 
 		printerr("ITS EMPTY")
-		
-		
+
 func skill_refund(_skill_price:Array)->void:
 	if refund_list.is_empty() == false:
 		Global.player_data.player_money += refund_list[0] # put money back into player
 		upgrade_price_list.insert(0,refund_list[0]) # put refund price from refund list to upgrade list
 		refund_list.remove_at(0) # remove 0 index
 	else: print("cant refund")
-
-
+# ------------------- 
+# button presses
+# -------------------
 func _on_minus_pressed() -> void:
 	skill_refund(upgrade_price_list)
 func _on_plus_pressed() -> void:
@@ -94,3 +91,24 @@ func _on_plus_pressed() -> void:
 # -------------------
 # SKILL TWO MOVEMENT SPEED %
 # -------------------
+var skill_2_name 
+var upgrade_price_list_skill_2 :Array = [1,2,3,4,5,6,7] #TODO BALANCE PATCH
+var refund_list_skill_2 : Array = []
+var upgrade_list_skill_2 : Array = [1,1,1,1,1,1,1]
+
+func update_skill_2():
+	pass 
+
+func skill_2_purchase():
+	pass
+	
+func skill_2_refund():
+	pass
+
+# -------------------
+# SKILL THREE RANGE
+# -------------------
+var skill_3_name 
+var upgrade_price_list_skill_3 : Array = [1,2,3,4,5,6] # TODO BALANCE PATCH
+var refund_list_skill_3 : Array = []
+var upgrade_list_skill_3
