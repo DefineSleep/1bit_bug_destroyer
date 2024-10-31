@@ -131,12 +131,14 @@ layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.413
 anchor_top = 0.261
-anchor_right = 0.677
-anchor_bottom = 0.667
-offset_left = -0.0849762
-offset_top = -0.036026
-offset_right = 0.0350647
-offset_bottom = -0.0921021
+anchor_right = 0.752229
+anchor_bottom = 0.782942
+offset_left = -33.0849
+offset_top = -24.036
+offset_right = -32.9649
+offset_bottom = -24.0921
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("2_w45nh")
 region_rect = Rect2(369, 481, 60, 95)
 patch_margin_left = 5
@@ -145,7 +147,6 @@ patch_margin_right = 15
 patch_margin_bottom = 5
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
-metadata/_edit_use_anchors_ = true
 
 [node name="group" type="Control" parent="screen/inside_window"]
 layout_mode = 1
@@ -215,30 +216,56 @@ texture_normal = SubResource("AtlasTexture_be3n2")
 texture_pressed = SubResource("AtlasTexture_lk1gl")
 texture_hover = SubResource("AtlasTexture_udbg8")
 
-[node name="test_label" type="Label" parent="screen/inside_window/group"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.313
-anchor_bottom = 0.3
-offset_left = -223.0
-offset_top = -91.0
-offset_right = -223.064
-offset_bottom = -92.0
-text = "TEST"
+[node name="name3" type="Label" parent="screen/inside_window/group/upgrades_container"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_k5s0e")
+text = "test"
 
-[node name="test_label2" type="Label" parent="screen/inside_window/group"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.313
-anchor_bottom = 0.3
-offset_left = -223.0
-offset_top = -66.0
-offset_right = -223.064
-offset_bottom = -67.0
-text = "TEST"
+[node name="minus3" type="TextureButton" parent="screen/inside_window/group/upgrades_container"]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_c4khi")
+texture_pressed = SubResource("AtlasTexture_lsujh")
+texture_hover = SubResource("AtlasTexture_v84g5")
+
+[node name="price3" type="Label" parent="screen/inside_window/group/upgrades_container"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_k5s0e")
+text = "$6"
+
+[node name="plus3" type="TextureButton" parent="screen/inside_window/group/upgrades_container"]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_be3n2")
+texture_pressed = SubResource("AtlasTexture_lk1gl")
+texture_hover = SubResource("AtlasTexture_udbg8")
+
+[node name="name4" type="Label" parent="screen/inside_window/group/upgrades_container"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_k5s0e")
+text = "test"
+
+[node name="minus4" type="TextureButton" parent="screen/inside_window/group/upgrades_container"]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_c4khi")
+texture_pressed = SubResource("AtlasTexture_lsujh")
+texture_hover = SubResource("AtlasTexture_v84g5")
+
+[node name="price4" type="Label" parent="screen/inside_window/group/upgrades_container"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_k5s0e")
+text = "$6"
+
+[node name="plus4" type="TextureButton" parent="screen/inside_window/group/upgrades_container"]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_be3n2")
+texture_pressed = SubResource("AtlasTexture_lk1gl")
+texture_hover = SubResource("AtlasTexture_udbg8")
 
 [node name="money_sprite" type="AnimatedSprite2D" parent="screen/inside_window/group"]
-position = Vector2(3.00005, 76)
+position = Vector2(7.00694, 97.1428)
 sprite_frames = SubResource("SpriteFrames_brd40")
 autoplay = "default"
 
@@ -271,5 +298,94 @@ patch_margin_bottom = 50
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="test_label" type="Label" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_right = 0.313
+anchor_bottom = 0.3
+offset_left = 22.0
+offset_top = 43.0
+offset_right = 21.936
+offset_bottom = 42.0
+text = "TEST"
+
+[node name="test_label2" type="Label" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_right = 0.313
+anchor_bottom = 0.3
+offset_left = 22.0
+offset_top = 75.0
+offset_right = 21.936
+offset_bottom = 74.0
+text = "TEST"
+
+[node name="test_label3" type="Label" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_right = 0.313
+anchor_bottom = 0.3
+offset_left = 22.0
+offset_top = 100.0
+offset_right = 21.936
+offset_bottom = 99.0
+text = "TEST"
+
+[node name="test_label4" type="Label" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_right = 0.313
+anchor_bottom = 0.3
+offset_left = 23.0
+offset_top = 125.0
+offset_right = 22.936
+offset_bottom = 124.0
+text = "TEST"
+
+[node name="test_label5" type="Label" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_right = 0.313
+anchor_bottom = 0.3
+offset_left = 20.0
+offset_top = 184.0
+offset_right = 19.936
+offset_bottom = 183.0
+text = "TEST"
+
+[node name="test_label6" type="Label" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_right = 0.313
+anchor_bottom = 0.3
+offset_left = 20.0
+offset_top = 216.0
+offset_right = 19.936
+offset_bottom = 215.0
+text = "TEST"
+
+[node name="test_label7" type="Label" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_right = 0.313
+anchor_bottom = 0.3
+offset_left = 20.0
+offset_top = 241.0
+offset_right = 19.936
+offset_bottom = 240.0
+text = "TEST"
+
+[node name="test_label8" type="Label" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_right = 0.313
+anchor_bottom = 0.3
+offset_left = 21.0
+offset_top = 266.0
+offset_right = 20.936
+offset_bottom = 265.0
+text = "TEST"
+
+[connection signal="pressed" from="screen/back_button" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="screen/inside_window/group/upgrades_container/minus" to="." method="_on_minus_pressed"]
 [connection signal="pressed" from="screen/inside_window/group/upgrades_container/plus" to="." method="_on_plus_pressed"]
+[connection signal="pressed" from="screen/inside_window/group/upgrades_container/minus2" to="." method="_on_minus_2_pressed"]
+[connection signal="pressed" from="screen/inside_window/group/upgrades_container/plus2" to="." method="_on_plus_2_pressed"]
+[connection signal="pressed" from="screen/inside_window/group/upgrades_container/minus3" to="." method="_on_minus_3_pressed"]
+[connection signal="pressed" from="screen/inside_window/group/upgrades_container/plus3" to="." method="_on_plus_3_pressed"]
+[connection signal="pressed" from="screen/inside_window/group/upgrades_container/minus4" to="." method="_on_minus_4_pressed"]
+[connection signal="pressed" from="screen/inside_window/group/upgrades_container/plus4" to="." method="_on_plus_4_pressed"]
