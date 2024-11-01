@@ -17,6 +17,8 @@ extends Node2D
 @onready var fps_label: Label = $player/Camera2D/HUD/fps_label
 
 
+var enemies_killed_total : int 
+
 var game_over : bool = false
 
 var seconds : int 
@@ -61,11 +63,19 @@ func _on_level_timer_timeout() -> void:
 
 const ENEMY_2 = preload("res://enemy_2.tscn")
 
+
+
 func spawn_system():
+	if enemies_killed_total >= 1000:
+		spawn_boss()
+		
 	if minutes >= 1:
 		spawn_timer_2.start()
 
 
+func spawn_boss():
+	pass
+	
 
 
 func spawn_enemy():

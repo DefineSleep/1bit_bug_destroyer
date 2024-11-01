@@ -21,7 +21,7 @@ Global="*res://Global.gd"
 
 [display]
 
-window/size/resizable=false
+window/stretch/mode="canvas_items"
 window/canvas_textures/default_texture_filter=1
 
 [global_group]

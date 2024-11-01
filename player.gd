@@ -36,9 +36,6 @@ func get_better_inputs()->void:
 	if input_direction.x == -1 : 
 		animated_sprite.flip_h = false
 	velocity = input_direction * char_speed
-	printerr(input_direction)
-
-	
 	move_and_slide()
 #---------------------
 # ADDING LIFESTEAL

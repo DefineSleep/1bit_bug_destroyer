@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://b5h3idwuj6vjs"]
+
+[ext_resource type="Texture2D" uid="uid://bmv3lmc8iqprc" path="res://ASSETS/Monochrome Dungeon Crawler RealSize.png" id="1_rs620"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lr0yb"]
+size = Vector2(27, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7cgnd"]
+atlas = ExtResource("1_rs620")
+region = Rect2(128, 49, 31.8651, 31)
+
+[node name="boss_1" type="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 2)
+shape = SubResource("RectangleShape2D_lr0yb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_7cgnd")
