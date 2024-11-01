@@ -1,25 +1,25 @@
 [gd_scene load_steps=9 format=3 uid="uid://ch1ymld48peyg"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_it33t"]
-[ext_resource type="Texture2D" uid="uid://dq2va6qcdwhe7" path="res://ASSETS/SpriteSheetTransparen_OUTLINEDt.png" id="2_kmg3g"]
+[ext_resource type="Texture2D" uid="uid://4g3ejkm06kvr" path="res://ASSETS/DARK_WIZARD.png" id="2_q07di"]
 [ext_resource type="PackedScene" uid="uid://diwlkxmcq0v2r" path="res://direction_arrow.tscn" id="3_ypqih"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0bwc0"]
-atlas = ExtResource("2_kmg3g")
-region = Rect2(192, 0, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_roy22"]
+atlas = ExtResource("2_q07di")
+region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pdkrn"]
-atlas = ExtResource("2_kmg3g")
-region = Rect2(208, 0, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_7o4s7"]
+atlas = ExtResource("2_q07di")
+region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6aprw"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0bwc0")
+"texture": SubResource("AtlasTexture_roy22")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_pdkrn")
+"texture": SubResource("AtlasTexture_7o4s7")
 }],
 "loop": true,
 "name": &"default",
