@@ -1,0 +1,125 @@
+[gd_scene load_steps=7 format=3 uid="uid://br3n7hkfsbfxi"]
+
+[ext_resource type="Script" path="res://main menu/level_select.gd" id="1_nno6q"]
+[ext_resource type="Texture2D" uid="uid://b3oydtciy60jp" path="res://ASSETS/game ui TRUE 1-bit.png" id="2_jmv6y"]
+[ext_resource type="Theme" uid="uid://c8x8ln26cthvb" path="res://unvis_button.tres" id="3_8ceci"]
+[ext_resource type="Texture2D" uid="uid://cpeocj2sqomvt" path="res://ASSETS/game UI.png" id="4_nyx2i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cweqr"]
+atlas = ExtResource("2_jmv6y")
+region = Rect2(288, 1035, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5rx3p"]
+atlas = ExtResource("2_jmv6y")
+region = Rect2(240, 1037, 16, 13)
+
+[node name="level_select" type="Control"]
+layout_mode = 3
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nno6q")
+
+[node name="screen" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.0260417
+anchor_top = 0.0493827
+anchor_right = 0.972222
+anchor_bottom = 0.901235
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="background" type="ColorRect" parent="screen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(288, 162)
+zoom = Vector2(2, 2)
+
+[node name="outside_window" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_nyx2i")
+region_rect = Rect2(32, 480, 80, 96)
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 50
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="inside_window" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.167106
+anchor_top = 0.199457
+anchor_right = 0.833335
+anchor_bottom = 0.79054
+offset_left = -0.252899
+offset_top = -3.624
+offset_right = -0.00106812
+offset_bottom = -0.134918
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_jmv6y")
+region_rect = Rect2(369, 481, 60, 95)
+patch_margin_left = 5
+patch_margin_top = 20
+patch_margin_right = 15
+patch_margin_bottom = 5
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="GridContainer" type="GridContainer" parent="inside_window"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0416667
+anchor_top = 0.179051
+anchor_right = 0.958333
+anchor_bottom = 0.917949
+offset_top = 0.0849991
+offset_right = 3.05176e-05
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/v_separation = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="icon_1" type="TextureButton" parent="inside_window/GridContainer"]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_cweqr")
+
+[node name="title_1" type="Button" parent="inside_window/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme = ExtResource("3_8ceci")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "DEBUG LV. 1"
+
+[node name="icon_2" type="TextureButton" parent="inside_window/GridContainer"]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_5rx3p")
+
+[node name="title_2" type="Button" parent="inside_window/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme = ExtResource("3_8ceci")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "HOMEWORK"
+
+[connection signal="pressed" from="inside_window/GridContainer/icon_1" to="." method="_on_icon_1_pressed"]
+[connection signal="pressed" from="inside_window/GridContainer/title_1" to="." method="_on_title_1_pressed"]

@@ -1,0 +1,67 @@
+[gd_scene load_steps=10 format=3 uid="uid://caqxee6srlpxl"]
+
+[ext_resource type="Texture2D" uid="uid://b5f2f8tmfd8d8" path="res://ASSETS/1-BIT_BUGS.png" id="1_hmbhj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7tgwf"]
+atlas = ExtResource("1_hmbhj")
+region = Rect2(0, 3, 17, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a3sn6"]
+atlas = ExtResource("1_hmbhj")
+region = Rect2(17, 3, 17, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g4x8x"]
+atlas = ExtResource("1_hmbhj")
+region = Rect2(34, 3, 17, 23)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q16ck"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7tgwf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a3sn6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g4x8x")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ho2ks"]
+size = Vector2(9.97365, 14)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yyqlm"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_emt6m"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Theme" id="Theme_vlitm"]
+ProgressBar/styles/background = SubResource("StyleBoxFlat_yyqlm")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_emt6m")
+
+[node name="enemy_2" type="CharacterBody2D" groups=["enemy"]]
+scale = Vector2(1.00264, 1)
+collision_layer = 2
+collision_mask = 3
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_q16ck")
+autoplay = "default"
+frame_progress = 0.593099
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8.9766e-06, -3)
+shape = SubResource("RectangleShape2D_ho2ks")
+
+[node name="health_bar" type="ProgressBar" parent="."]
+offset_left = -5.9842
+offset_top = -15.0
+offset_right = 7.0158
+offset_bottom = -14.0
+theme = SubResource("Theme_vlitm")
+show_percentage = false

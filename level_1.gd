@@ -8,6 +8,7 @@ extends Node2D
 @onready var money_label: Label = $player/Camera2D/HUD/money_label
 
 @onready var spawn_timer: Timer = $player/spawn_timer
+@onready var spawn_timer_2: Timer = $player/spawn_timer2
 
 
 
@@ -29,6 +30,7 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
+	spawn_timer.wait_time = Global.enemy_1_data.enemy_spawn_rate
 	fps_label.text = 'FPS: '+str(Engine.get_frames_per_second())
 	# labels
 	time_label.text = str(hours).pad_zeros(2)+":"+ str(minutes).pad_zeros(2) +":"+ str(seconds).pad_zeros(2)
@@ -57,6 +59,15 @@ func _on_level_timer_timeout() -> void:
 #-------------
 #TODO INCREMENT SPAWN AND ADD VARIABLES
 
+const ENEMY_2 = preload("res://enemy_2.tscn")
+
+func spawn_system():
+	if minutes >= 1:
+		spawn_timer_2.start()
+
+
+
+
 func spawn_enemy():
 	var enemy_1 = preload("res://enemy_1.tscn").instantiate()
 	%PathFollow2D.progress_ratio = randf()
@@ -65,8 +76,17 @@ func spawn_enemy():
 	
 
 
+func spawn_enemy_better(_enemy_scene):
+	var enemy_1 = _enemy_scene.instantiate()
+	%PathFollow2D.progress_ratio = randf()
+	enemy_1.global_position = %PathFollow2D.global_position
+	add_child(enemy_1)
+
 func _on_spawn_timer_timeout() -> void:
 	spawn_enemy()
+
+func _on_spawn_timer_2_timeout() -> void:
+	pass # Replace with function body.
 
 
 #-------------
@@ -89,10 +109,6 @@ func _on_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://main menu/main_menu.tscn")
 
 
-func _on_button_2_pressed() -> void:
-	get_tree().quit()
-	
-	
 #-------------
 # PAUSE MENU AND SHIT
 #-------------

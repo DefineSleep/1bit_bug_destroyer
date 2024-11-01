@@ -398,6 +398,8 @@ metadata/_edit_use_anchors_ = true
 [node name="spawn_timer" type="Timer" parent="player"]
 autostart = true
 
+[node name="spawn_timer2" type="Timer" parent="player"]
+
 [node name="level_timer" type="Timer" parent="player"]
 autostart = true
 
@@ -526,11 +528,6 @@ layout_mode = 2
 theme = ExtResource("9_rm18q")
 text = "- MENU -"
 
-[node name="exit" type="Button" parent="pause_menu/Control/VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("9_rm18q")
-text = "- EXIT -"
-
 [node name="game_over_shade" type="CanvasLayer" parent="."]
 visible = false
 
@@ -544,10 +541,10 @@ color = Color(0, 0, 0, 0.921569)
 
 [connection signal="health_depleted" from="player" to="." method="_on_player_health_depleted"]
 [connection signal="timeout" from="player/spawn_timer" to="." method="_on_spawn_timer_timeout"]
+[connection signal="timeout" from="player/spawn_timer2" to="." method="_on_spawn_timer_2_timeout"]
 [connection signal="timeout" from="player/level_timer" to="." method="_on_level_timer_timeout"]
 [connection signal="timeout" from="player/dps_timer" to="player" method="_on_dps_timer_timeout"]
 [connection signal="pressed" from="game_over_window/Control/VBoxContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="game_over_window/Control/VBoxContainer/Button2" to="." method="_on_button_2_pressed"]
 [connection signal="pressed" from="pause_menu/Control/VBoxContainer/unpause" to="." method="_on_unpause_pressed"]
 [connection signal="pressed" from="pause_menu/Control/VBoxContainer/menu" to="." method="_on_menu_pressed"]
-[connection signal="pressed" from="pause_menu/Control/VBoxContainer/exit" to="." method="_on_exit_pressed"]

@@ -15,7 +15,7 @@ var player_data : Dictionary = {
 }
 
 var enemy_1_data : Dictionary = {
-	"enemy_spawn_rate" : "TBD",
+	"enemy_spawn_rate" : 1, # per second
 	"base_health" : 100,
 	"movement_speed" : 50
 }
