@@ -21,6 +21,14 @@ var enemy_1_data : Dictionary = {
 }
 
 
+var enemy_boss_data : Dictionary = {
+	
+	
+}
+
+
+
+
 var all_bullets : Dictionary = {}
 
 var level_data : Dictionary = {

@@ -1,0 +1,42 @@
+[gd_scene load_steps=8 format=3 uid="uid://c7fsubhbvj80l"]
+
+[ext_resource type="Script" path="res://enemy_boss.gd" id="1_rcqd0"]
+[ext_resource type="Texture2D" uid="uid://bmv3lmc8iqprc" path="res://ASSETS/Monochrome Dungeon Crawler RealSize.png" id="2_g5784"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bhm5e"]
+atlas = ExtResource("2_g5784")
+region = Rect2(129, 49, 31, 31)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ho2ks"]
+size = Vector2(10.971, 8)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yyqlm"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_emt6m"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Theme" id="Theme_vlitm"]
+ProgressBar/styles/background = SubResource("StyleBoxFlat_yyqlm")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_emt6m")
+
+[node name="enemy_boss" type="CharacterBody2D" groups=["enemy"]]
+scale = Vector2(1.00264, 1)
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_rcqd0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_bhm5e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.498683, 0)
+shape = SubResource("RectangleShape2D_ho2ks")
+
+[node name="health_bar" type="ProgressBar" parent="."]
+offset_left = -6.0
+offset_top = -6.0
+offset_right = 7.0
+offset_bottom = -5.0
+theme = SubResource("Theme_vlitm")
+show_percentage = false
